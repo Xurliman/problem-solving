@@ -1,4 +1,4 @@
-package main
+package add_two_binaries
 
 import "log"
 

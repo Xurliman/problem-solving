@@ -1,4 +1,4 @@
-package _0_climbing_stairs
+package climbing_stairs
 
 var l = map[int]int{
 	1:1,

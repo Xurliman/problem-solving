@@ -1,4 +1,4 @@
-package _8_remove_element
+package remove_element
 
 import "testing"
 
