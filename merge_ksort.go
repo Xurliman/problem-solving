@@ -1,12 +1,4 @@
-package merge_sorted_lists
-
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+package main
 
 type ListNode struct {
 	Val  int
@@ -23,14 +15,25 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 		return list1
 	}
 
-	if list1.Val < list2.Val {
-		sortedList.Val = list1.Val
-		sortedList.Next = mergeTwoLists(list1.Next, list2)
-	} else {
-		sortedList.Val = list2.Val
-		sortedList.Next = mergeTwoLists(list1, list2.Next)
+	dummy := &sortedList
+	for list1 != nil && list2 != nil {
+		if list1.Val < list2.Val {
+			dummy.Next = list1
+			list1 = list1.Next
+		} else {
+			dummy.Next = list2
+			list2 = list2.Next
+		}
+
+		dummy = dummy.Next
 	}
-	return &sortedList
+	if list1 != nil {
+		dummy.Next = list1
+	} else {
+		dummy.Next = list2
+	}
+
+	return sortedList.Next
 }
 
 func mergeKLists(lists []*ListNode) *ListNode {
